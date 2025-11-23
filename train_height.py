@@ -192,10 +192,9 @@ def main():
 
         print(f"[{epoch:02d}/{epochs}] train_loss={train_loss:.4f}  val_loss={val_loss:.4f}  val_iou={val_iou:.4f}")
 
-
-        if not os.path.exists(f'trained_model_height/{DAY}'):
-            os.mkdir(f'trained_model_height/{DAY}')
-        f = f'trained_model_height/{DAY}/model.{epoch}.pth'
+        if not os.path.exists(f'models/{DAY}'):
+            os.mkdir(f'models/{DAY}')
+        f = f'models/{DAY}/model.{epoch}.pth'
         save_training_state(f, model, opt, scheduler, scaler, epoch, 0, last_loss, 
             # ema=ema, 
             extra={'in_channels': len(train_rasters), 'out_channels': len(mask_images), 'M': M}
